@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Quiz.create(:title => 'My First Ever Quiz', :question => 'This is my first question', :difficulty => 2)
+
+Question.create(:question => 'What is the name of Thomas Jefferson\'s house?', :answer => 'Monticello', :correctanswer => 'b', :difficulty => 2)

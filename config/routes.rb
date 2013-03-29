@@ -1,4 +1,14 @@
 Trivia::Application.routes.draw do
+  
+  get "answer/index"
+
+  resources :quizzes do
+    resources :questions do
+      resources :answers
+    end
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
