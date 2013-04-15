@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+var label = $('label')
+
+for (i=0; i<label.length;i++){
+    if ($(label).eq(i).html() === 'Question') {
+      $(label).eq(i).html('Question ' + i);
+    }
+}

@@ -1,33 +1,40 @@
-<%= form_for(@quiz) do |f| %>
-  <% if @quiz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
 
-      <ul>
-      <% @quiz.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <%= form_for(@quiz) do |f| %>
+    <% if @quiz.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+        <ul>
+        <% @quiz.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <%= f.fields_for :questions do |builder| %>  
+      <%= render 'question_fields', :f => builder %>
+    <% end %>
+    <%= link_to_add_fields "Add Question", f, :questions %>
+
+    <br />
+    <br />
+    <div class="field">
+      <%= f.label :difficulty %><br />
+      <%= f.text_field :difficulty %>
+    </div>
+    <div class="field">
+      <%= f.label :date %><br />
+      <%= f.text_field :date %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit 'Save Quiz', :class => "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :difficulty %><br />
-    <%= f.text_field :difficulty %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.text_field :date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

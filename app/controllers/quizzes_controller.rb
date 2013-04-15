@@ -14,7 +14,6 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1.json
   def show
     @quiz = Quiz.find(params[:id])
-    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +25,11 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new.json
   def new
     @quiz = Quiz.new
+    
+    10.times do
+      question = @quiz.questions.build
+      4.times { question.answers.build }
+    end
 
     respond_to do |format|
       format.html # new.html.erb

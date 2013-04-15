@@ -1,5 +1,7 @@
 Trivia::Application.routes.draw do
   
+  root :to => 'quizzes#index'
+  
   get "answer/index"
 
   resources :quizzes do

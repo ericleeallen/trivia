@@ -6,58 +6,34 @@
 </p>
 
 <p>
-  <b>Question:</b>
-  <%= @quiz.question %>
-</p>
-
-<p>
-  <b>Difficulty:</b>
-  <%= @quiz.difficulty %>
-</p>
-
-<p>
   <b>Date:</b>
   <%= @quiz.date %>
 </p>
 
+  <p>
+    <h1>Number of Questions</h1>
+    <%= @quiz.questions.count %>
+  </p> 
  
 <h2>Questions</h2>
-<% @quiz.questions.each do |questions| %>
+<% @quiz.questions.each do |questions| %> 
+
   <p>
     <b>Question:</b>
     <%= questions.question %>
   </p>
+  <ol>
     <% questions.answers.each do |answers| %>
       <p>
-        <p><%=answers.id%>. <%= answers.answer %></p>
+        <li><%= answers.answer %></li>
       </p>
     <% end %>
+  </ol>
 <% end %> 
 
 
 
-<h2>Add new question</h2>
-<%= form_for([@quiz, @quiz.questions.build]) do |f| %>
-  <div class="field">
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :answer %><br />
-    <%= f.text_field :answer %>
-  </div>
-  <div class="field">
-    <%= f.label :correctanswer %><br />
-    <%= f.text_field :correctanswer %>
-  </div>
-  <div class="field">
-    <%= f.label :difficulty %><br />
-    <%= f.text_field :difficulty %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>  
+
 
 
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
